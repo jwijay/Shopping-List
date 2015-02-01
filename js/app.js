@@ -1,4 +1,4 @@
-(function() {
+// (function() {
   var addItemButton = document.getElementById("add_shopping_list_item_button");
   addItemButton.addEventListener("click", add_to_shopping_list);
 
@@ -21,4 +21,14 @@
     shoppingListHTML = shoppingList.render();
     document.getElementById("content").innerHTML = shoppingListHTML;
   }
-})();
+
+  function changeCheckedStatus (idx) {
+    //check whether checkbox (on index.html) is checked or not
+    if (document.getElementsByTagName("input")[idx].checked) {
+      shoppingList.items[idx].check();
+    } else {
+      shoppingList.items[idx].uncheck();
+    }
+  }
+
+// })();

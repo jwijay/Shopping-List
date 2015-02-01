@@ -42,7 +42,7 @@ The tests should describe the following shopping list functionality:
 - ShoppingListItem has a method named `uncheck`
   -  calling the instance's `uncheck` method will set it's `is_done` property to false
 - ShoppingListItem has a method named `render`
-  -  calling the instance's `render` method will return a string formatted in html, in an <li> element. `<li class="completed_[is_done]"><span>[name]</span> <span>[description]</span></li>`.  example: `<li class="completed_false"><span>Avocado</span> <span>Must be eaten immediately.</span></li>`
+  -  calling the instance's `render` method will construct and return an html formatted string. the string content will be wrapped in "<li>" tags.  `<li class="completed_[is_done]"><span>[name]</span> <span>[description]</span></li>`.   example: `<li class="completed_false"><span>Avocado</span> <span>Must be eaten immediately.</span></li>`
 
 hint: multiline strings in javascript need to be "escaped"
 
@@ -72,7 +72,7 @@ var some_html_output = '<ul> \
   - invoking the `removeItem` method with no parameters should remove the last item in the `items` list, if there are any items, else it does nothing
   - invoking the `removeItem` method by passing in anything else that is not a ShoppingListItem object (that exists in the `items` array) should immediately throw an error
 - ShoppingList has a method named `render`
-  - calling the instance's `render` method will concatenate the result of calling `render()` on each item in this object's `items` array, wrapping it in a <ul> element, and returning an html formatted string. ex: `<ul>...[all the li elements from ShoppingListItem.render()]...</ul>`
+  - calling the instance's `render` method will concatenate the result of calling `render()` on each item in this object's `items` array, wrapping it in a "<ul>" tags, and returning an html formatted string. ex: `<ul>...[all the li elements from ShoppingListItem.render()]...</ul>`
 
 
 ### test.html
@@ -166,3 +166,41 @@ Create an `add_shopping_list_item_button` function that will read the value of t
 Invoke your shopping list's `addItem` by passing in your `new_shopping_list_item`.
 
 Re-render the shopping list.
+
+commit and push your work
+
+## 4. Check and Uncheck shopping list items
+
+Modify the ShoppingListItem `render()` method to include a `checkbox` input. Add an `onchange` event listener to this checkbox that will call a function named `changeCheckedStatus(idx, checked)` where 'idx' is the position (array index) of the ShoppingListItem, and 'checked' is the value of the checkbox. [http://www.w3schools.com/jsref/prop_checkbox_checked.asp](http://www.w3schools.com/jsref/prop_checkbox_checked.asp)  
+
+
+### app.js
+
+#### changeCheckedStatus()
+
+create a `changeCheckedStatus` function that accepts a single argument, idx.  
+it will find a ShoppingListItem based on the idx passed in to the function.  
+determine if the checkbox that has been clicked, is now checked or not checked. [http://www.w3schools.com/jsref/event_onchange.asp](http://www.w3schools.com/jsref/event_onchange.asp)  
+if the checkbox is checked, 
+ invoke the shopping_list_item object's `check()` method.
+if the checkbox is not checked,  
+ invoke the shopping_list_item object's `uncheck()` method.
+then, re-render the shopping list.
+
+commit and push your work.
+
+
+## 5. Remove shopping list items
+
+Modify the ShoppingListItem `render()` method to include a `button` element with the label `x`. Add a `click` event listener to this button that will call a function named `removeItemButtonClicked(idx)` where 'idx' is the position (array index) of the ShoppingListItem. 
+
+### app.js
+
+#### removeItemButtonClicked()
+
+create a `removeItemButtonClicked` function that accepts a single argument, idx.  
+it will find a ShoppingListItem based on the idx passed in to the function.  
+it will call the shopping_list instance's `removeItem` method, while passing in the found ShoppingListItem object as an argument.
+then, re-render the shopping list.  
+
+commit and push your work.
