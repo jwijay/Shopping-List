@@ -20,6 +20,10 @@
 
     shoppingListHTML = shoppingList.render();
     document.getElementById("content").innerHTML = shoppingListHTML;
+
+    //this is a hack-y way to reset the form... (There's only one form on
+    //the page with an index of 0.)
+    document.forms[0].reset();
   }
 
   function changeCheckedStatus (idx) {
@@ -34,8 +38,13 @@
     document.getElementById("content").innerHTML = shoppingListHTML;
   }
 
-  // function removeItemButtonClicked (idx) {
-  //   shoppingList.removeItem(shoppingList.items[idx]);
-  // }
+  function removeItemButtonClicked (idx) {
+    shoppingList.removeItem(shoppingList.items[idx]);
+  
+    //re-render the shopping list! o__o Why am I repeating myself...
+    shoppingListHTML = shoppingList.render();
+    document.getElementById("content").innerHTML = shoppingListHTML;
+  }
+
 
 // })();
