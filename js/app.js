@@ -14,16 +14,18 @@
     //read the value of the title and description fields
     //create a new shopping list item with all that junk
     var title = document.getElementById("itemName").value;
-    var description = document.getElementById("itemDescription").value;
-    var new_shopping_list_item = new ShoppingListItem(title, description);
-    shoppingList.addItem(new_shopping_list_item);
+    if (title !== "") {
+      var description = document.getElementById("itemDescription").value;
+      var new_shopping_list_item = new ShoppingListItem(title, description);
+      shoppingList.addItem(new_shopping_list_item);
 
-    shoppingListHTML = shoppingList.render();
-    document.getElementById("content").innerHTML = shoppingListHTML;
+      shoppingListHTML = shoppingList.render();
+      document.getElementById("content").innerHTML = shoppingListHTML;
 
-    //this is a hack-y way to reset the form... (There's only one form on
-    //the page with an index of 0.)
-    document.forms[0].reset();
+      //this is a hack-y way to reset the form... (There's only one form on
+      //the page with an index of 0.)
+      document.forms[0].reset();
+    }
   }
 
   function changeCheckedStatus (idx) {
