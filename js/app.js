@@ -29,6 +29,13 @@
     } else {
       shoppingList.items[idx].uncheck();
     }
+    //re-render the shopping list! o__o
+    shoppingListHTML = shoppingList.render();
+    document.getElementById("content").innerHTML = shoppingListHTML;
   }
+
+  // function removeItemButtonClicked (idx) {
+  //   shoppingList.removeItem(shoppingList.items[idx]);
+  // }
 
 // })();

@@ -31,8 +31,11 @@ function ShoppingList (items) {
     var itemsHTML = '<ul>';
     //TODO: figure out how to do this without any loops :O
     for (var i = 0; i < this.items.length; i++) {
-      itemsHTML += this.items[i].render();
+      itemsHTML += this.items[i].render(i);
     }
+    // itemsHTML += this.items.reduce(function (prev, curr, idx) {
+    //   return prev + curr.render(idx);
+    // }, "" ) ;
     itemsHTML += '</ul>';
 
     return itemsHTML;
