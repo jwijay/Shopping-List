@@ -20,6 +20,23 @@ function ShoppingListItem (name, description) {
     if (this.is_done) {
       checked = ' checked';
     }
-    return '<div class="col-sm-11 checkbox"><label><input type="checkbox" value"" onchange="changeCheckedStatus(' + idx + ');"' + checked + '><li class="completed_' + this.is_done + '">\n<span><strong>' + this.name + '</strong></span>\n<br>\n<span>' + this.description + '</span>\n</li></label></div><div class="col-sm-1 badge" id="remove-button" onclick="removeItemButtonClicked(' + idx + ');"><span class="glyphicon glyphicon-remove"></span></div>';
+    return '<div class="row">' +
+    '<div class="checkbox col-xs-10">' + 
+    '<label>' + 
+    '<input type="checkbox" value="" onchange="changeCheckedStatus(' + idx + ');"' + checked + '>' + 
+    '<li class="completed_' + this.is_done + '">' + 
+    '<span><strong>' + this.name + '</strong></span>' + 
+    '<br>' + 
+    '<span>' + this.description + '</span>' + 
+    '</li>' + 
+    '</label>' + 
+    '</div>' + 
+    '<div class="x-box col-xs-2">' + 
+    '<div class="badge">' + 
+    '<span class="glyphicon glyphicon-remove" id="remove-button" onclick="removeItemButtonClicked(' + idx + ');">' + 
+    '</span>' + 
+    '</div>' + 
+    '</div>' + 
+    '</div>';
   };
 }
